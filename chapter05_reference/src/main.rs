@@ -17,6 +17,15 @@ fn sort_works(table: &mut Table) {
     }
 }
 
+static mut STASH: &i32 = &128;
+fn f(p: &'static i32) {
+    unsafe {
+        STASH = p;
+    }
+}
+
+static TECH: i32 = 1000;
+
 fn main() {
     let mut table = Table::new();
     table.insert(
@@ -43,4 +52,6 @@ fn main() {
     show(&table);
     sort_works(&mut table);
     assert_eq!(table["Gesualdo"][0], "many madrigals");
+
+    f(&TECH);
 }
