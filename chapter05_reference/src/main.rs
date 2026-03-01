@@ -26,6 +26,11 @@ fn f(p: &'static i32) {
 
 static TECH: i32 = 1000;
 
+// 構造体が参照をフィールドに持つ場合は生存期間を明示する
+struct D<'a> {
+    s: &'a i32,
+}
+
 fn main() {
     let mut table = Table::new();
     table.insert(
